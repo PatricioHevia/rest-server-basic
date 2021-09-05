@@ -1,34 +1,45 @@
-const { response } = require("express");
+const { response, request } = require("express");
 
 // Function GET
-const usersGet =  (req, res = response) => {
+const usersGet =  (req = request, res = response) => {
+
+    const {q, id} = req.query;
+
     res.json( {
-        ok: 'GET by controller'
+        ok: 'GET by controller',
+        q,
+        id
     });
 }
 
 // Function PUT
-const usersPut =  (req, res = response) => {
+const usersPut =  (req = request, res = response) => {
+    
+    const id = req.params.id;
     res.json( {
-        ok: 'PUT by controller'
+        ok: 'PUT by controller',
+        id
     });
 }
 
 // Function POST
-const usersPost =  (req, res = response) => {
+const usersPost =  (req = request, res = response) => {
+    const { name, age } = req.body;
+
     res.json( {
-        ok: 'POST by controller'
+        ok: 'POST by controller',
+        name, age
     });
 }
 
 // Function DELETE
-const usersDelete =  (req, res = response) => {
+const usersDelete =  (req = request, res = response) => {
     res.json( {
         ok: 'DELETE by controller'
     });
 }
 // Function PATCH
-const usersPatch =  (req, res = response) => {
+const usersPatch =  (req = request, res = response) => {
     res.json( {
         ok: 'PATCH by controller'
     });
